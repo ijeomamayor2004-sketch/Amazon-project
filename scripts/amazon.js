@@ -76,6 +76,13 @@ document.querySelectorAll('.js-add-to-cart').forEach((button) => {
       });
     }
 
-    console.log(cart);
+    let cartQuantity = 0;
+
+    /* This loop is calculating the total number of quantities in the cart for js-cart-quantity display on amazon.html*/
+    cart.forEach((item) => {
+      cartQuantity += item.quantity;
+    });
+
+    document.querySelector('.js-cart-quantity').innerHTML = cartQuantity;
   });
 });
