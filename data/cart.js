@@ -11,6 +11,9 @@ function saveToStorage() {
 }
 
 export function addToCart(productId) {
+  /* This code makes the Quantity selsctor interactive */
+  const cartSelector = document.querySelector(`.js-quantity-selector-${productId}`).value;
+  
   let matchingItem;
 
   /* This loop is Checking if there is a product with thesame name already available */
@@ -22,11 +25,11 @@ export function addToCart(productId) {
 
   /* This is now increasing the quantity if the product already exists */
   if (matchingItem) {
-    matchingItem.quantity += 1;
+    matchingItem.quantity += Number(cartSelector);
   } else {
     cart.push({
       productId: productId,
-      quantity: 1
+      quantity: Number(cartSelector)
     });
   }
 
