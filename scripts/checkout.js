@@ -1,4 +1,4 @@
-import { cart, removeFromCart } from "../data/cart.js";
+import { cart, removeFromCart, calculateCartQuantity } from "../data/cart.js";
 import { products } from "../data/products.js";
 import { formtCurrency } from "./utils/money.js";
 
@@ -94,6 +94,15 @@ cart.forEach((cartItem) => {
   `;
 })
 
+/* This code makes the Cheakout header interactive */
+function checkoutCartQuantity() {
+  const cartQuantity = calculateCartQuantity();
+
+  document.querySelector('.js-cheakout-items').innerHTML = `${cartQuantity} items`;
+}
+
+checkoutCartQuantity();
+
 document.querySelector('.js-order-summary').innerHTML = cartSummaryHTML;
 
 document.querySelectorAll('.js-delete-link').forEach((link) => {
@@ -102,5 +111,6 @@ document.querySelectorAll('.js-delete-link').forEach((link) => {
     removeFromCart(productId);
     const container = document.querySelector(`.js-cart-item-container-${productId}`)
     container.remove();
+    checkoutCartQuantity();
   })
 })

@@ -1,4 +1,4 @@
-import {cart, addToCart} from '../data/cart.js';
+import {cart, addToCart, calculateCartQuantity} from '../data/cart.js';
 import { products } from '../data/products.js';
 import { formtCurrency } from './utils/money.js';
 
@@ -57,16 +57,14 @@ products.forEach((product) => {
 
 document.querySelector('.js-products-grid').innerHTML = productsHTML;
 
+/* This funtion calculates the cart quantity and returns the numbered result into the variable which is used to display it on the page */
 function updateCartQuantity() {
-  let cartQuantity = 0;
-
-  /* This loop is calculating the total number of quantities in the cart for js-cart-quantity display on amazon.html*/
-  cart.forEach((cartItem) => {
-    cartQuantity += cartItem.quantity;
-  });
+  const cartQuantity = calculateCartQuantity();
 
   document.querySelector('.js-cart-quantity').innerHTML = cartQuantity;
 }
+
+updateCartQuantity();
 
 let timeoutId;
 
