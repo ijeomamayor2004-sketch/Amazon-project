@@ -55,7 +55,4 @@ export function renderPaymentSummary() {
   `;
 
   document.querySelector('.js-payment-summary').innerHTML = paymentSummaryHTML;
-
-  console.log(productPriceCents / 100);
-  console.log(shippingPriceCents / 100);
-}
+};
