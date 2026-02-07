@@ -1,4 +1,4 @@
-import { getProduct, Product, Clothing, Appliance } from "../../data/products.js";
+import { getProduct, Product, Clothing, Appliance, loadProducts } from "../../data/products.js";
 
 describe('test suite: products classes', () => {
   it('testing for Product class', () => {
@@ -111,6 +111,12 @@ describe('test suite: products classes', () => {
 })
 
 describe('test suite: getProducts', () => {
+  beforeAll((done) => {
+    loadProducts(() => {
+      done();
+    });
+  });
+
   it('with productId existing in product', () => {
     const matchingProduct = getProduct('e43638ce-6aa0-4b85-b27f-e1d07eb678c6');
 
