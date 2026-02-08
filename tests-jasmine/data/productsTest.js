@@ -1,4 +1,4 @@
-import { getProduct, Product, Clothing, Appliance, loadProducts } from "../../data/products.js";
+import { getProduct, Product, Clothing, Appliance, loadProducts, loadProductsFetch } from "../../data/products.js";
 
 describe('test suite: products classes', () => {
   it('testing for Product class', () => {
@@ -112,7 +112,7 @@ describe('test suite: products classes', () => {
 
 describe('test suite: getProducts', () => {
   beforeAll((done) => {
-    loadProducts(() => {
+    loadProductsFetch().then(() => {
       done();
     });
   });
