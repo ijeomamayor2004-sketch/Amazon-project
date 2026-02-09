@@ -7,7 +7,13 @@ import { loadProducts, loadProductsFetch } from "../data/products.js";
 // import '../data/backend-practice.js';
 
 async function loadPage() {
-  await loadProductsFetch();
+  try {
+    // throw 'error1';
+
+    await loadProductsFetch();
+  } catch (error) {
+    console.log(`Unexpected error => ${error}`);
+  }
 
   checkoutHeader();
   renderPaymentSummary();
