@@ -19,7 +19,7 @@ function saveToStorage() {
 }
 
 export function addToCart(productId) {
-  /* This code makes the Quantity selsctor interactive */
+  /* This code makes the Quantity selector interactive */
   const cartSelector = document.querySelector(`.js-quantity-selector-${productId}`).value;
   
   let matchingItem;

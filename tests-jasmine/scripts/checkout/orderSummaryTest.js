@@ -1,6 +1,6 @@
-import {renderOrderSummary} from '../../scripts/checkout/orderSummary.js';
-import {loadFromStorage, cart} from '../../data/cart.js';
-import {loadProducts, loadProductsFetch} from '../../data/products.js';
+import {renderOrderSummary} from '../../../scripts/checkout/orderSummary.js';
+import {loadFromStorage, cart} from '../../../data/cart.js';
+import {loadProducts, loadProductsFetch} from '../../../data/products.js';
 
 describe('test suite: renderOrderSummary', () => {
   const productId1 = 'e43638ce-6aa0-4b85-b27f-e1d07eb678c6';
@@ -16,6 +16,7 @@ describe('test suite: renderOrderSummary', () => {
     spyOn(localStorage, 'setItem');
 
     document.querySelector('.js-test-container').innerHTML = `
+      <div class="js-checkout-items"></div>
       <div class="js-order-summary"></div>
       <div class="js-payment-summary"></div>
     `;
@@ -38,22 +39,22 @@ describe('test suite: renderOrderSummary', () => {
 
   it('displays the cart', () => {
     expect(
-      document.querySelectorAll('.js-cart-item-container').length
+      document.querySelectorAll('.cart-item-container').length
     ).toEqual(2);
     expect(
-      document.querySelector(`.js-product-quantity-${productId1}`).innerText
-    ).toContain('Quantity: 2');
+      document.querySelector(`.js-quantity-label-${productId1}`).innerText
+    ).toContain('2');
     expect(
-      document.querySelector(`.js-product-quantity-${productId2}`).innerText
-    ).toContain('Quantity: 1');
+      document.querySelector(`.js-quantity-label-${productId2}`).innerText
+    ).toContain('1');
 
     document.querySelector('.js-test-container').innerHTML = '';
   });
 
   it('removes a product', () => {
-    document.querySelector(`.js-delete-link-${productId1}`).click();
+    document.querySelector(`.js-delete-link[data-product-id="${productId1}"]`).click();
     expect(
-      document.querySelectorAll('.js-cart-item-container').length
+      document.querySelectorAll('.cart-item-container').length
     ).toEqual(1);
     expect(
       document.querySelector(`.js-cart-item-container-${productId1}`)
