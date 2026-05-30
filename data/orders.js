@@ -1,4 +1,10 @@
-export const orders = JSON.parse(localStorage.getItem('orders')) || [];
+export let orders;
+
+loadStorageOrder();
+
+export function loadStorageOrder() {
+  orders = JSON.parse(localStorage.getItem('orders')) || [];
+}
 
 export function addOrder(order) {
   orders.unshift(order);
