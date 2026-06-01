@@ -4,6 +4,12 @@ import { getDeliveryOption } from '../../data/deliveryOptions.js';
 import { formatCurrency } from '../utils/money.js';
 import { addOrder } from '../../data/orders.js';
 
+export const navigation = {
+  goToOrders: () => {
+    window.location.href = 'orders.html';
+  }
+};
+
 export function renderPaymentSummary() {
   let productPriceCents = 0;
   let shippingPriceCents = 0;
@@ -72,12 +78,11 @@ export function renderPaymentSummary() {
 
         const order = await response.json();
         addOrder(order);
+        navigation.goToOrders();
       } catch(error) {
         console.log('Unexpected error, try again later.')
       }
-    
-      window.location.href = 'orders.html';
-  });
+    });
 
   function checkoutCartQuantity() {
     const cartQuantity = calculateCartQuantity();
