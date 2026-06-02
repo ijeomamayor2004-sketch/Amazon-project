@@ -2,10 +2,6 @@
 
 An ecommerce demo that showcases product browsing, cart management, and checkout functionality.
 
-## Live Demo
-
-[Live Demo](https://ijeomamayor2004-sketch.github.io/Amazon-project)
-
 ## Screenshots / GIFs
 
 ![Homepage](images/website-images/Homepage.gif)
